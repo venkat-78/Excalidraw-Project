@@ -1,103 +1,441 @@
-@@ -3,9 +3,99 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F2_Project</title>
-    <title>Excalidraw</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="preload" href="/Virgil.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="/Cascadia.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="stylesheet" href="/style.css" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-</head>
-<body>
-
-</body>
-    <header>
-        <!-- <h1 class="visually-hidden">Excalidraw</h1> -->
-      </header>
-    <div id="root">
-     <div class="excalidraw-app" style="height: 100%;">
-        <div class="excalidrawContainer" >
-        <div class="fixedSideContainer sideTop d-flex box-sizing: content-box;">
-            <div class="appMenuTop">
-                <div class="appMenuTopLeft">
-                    <div style="position: relative;">
-                        <button class="dropDownMenuBtn d-flex box-sizing: content-box; p-3 border">
-                            <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <g stroke-width="1.5">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <line x1="4" y1="6" x2="20" y2="6"></line>
-                                    <line x1="4" y1="12" x2="20" y2="12"></line>
-                                    <line x1="4" y1="18" x2="20" y2="18"></line>
-                                </g>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Excalidraw Clone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="mt-5">
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          "
+        >
+          <nav class="navbar">
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler"
+                id="top-left"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-2 mb-2">
+                  <li class="nav-item mb-2 d-flex justify-content-between">
+                    <a href="#">Open</a>
+                    <p class="ms-2">Ctrl+O</p>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Save to...</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Export image...</a>
+                    <p class="ms-2">Ctrl+Shift+E</p>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Live collaboration</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Help</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Reset the canvas</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Excalidraw+</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Github</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Discord</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Twitter</a>
+                  </li>
+                  <li class="nav-item mb-2 d-flex justify-content-start">
+                    <a href="#">Dark Mode</a>
+                    <p>Shift+Alt+D</p>
+                  </li>
+                  <li class="nav-item mb-2">
+                    <form class="d-flex" role="search">
+                      <select name="language" id="language" class="form-select">
+                        <option value="english" selected>English</option>
+                        <option value="hindi">Hindi</option>
+                        <option value="bahasa-indonesia">
+                          Bahasa Indonesia
+                        </option>
+                        <option value="catalia">Catalia</option>
+                        <option value="deutsch">Deutsch</option>
+                        <option value="espanol">Espanol</option>
+                        <option value="euskara">Euskara</option>
+                        <option value="francais">Francais</option>
+                        <option value="galego">Galego</option>
+                        <option value="italiano">italiano</option>
+                        <option value="kurdi">Kurdi</option>
+                        <option value="latviesu">Latviesu</option>
+                        <option value="norsk-bokmal">Norsk bokmal</option>
+                        <option value="occitan">Occitan</option>
+                        <option value="polski">Polski</option>
+                        <option value="portugues">Portugues</option>
+                        <option value="portugues-brasileiro">
+                          Portugues Brasileiro
+                        </option>
+                        <option value="romana">Romana</option>
+                        <option value="slovencina">Slovencina</option>
+                        <option value="slovenscina">Slovenscina</option>
+                        <option value="suomi">Suomi</option>
+                        <option value="svenska">Svenska</option>
+                        <option value="taqbaylit">Taqbaylit</option>
+                        <option value="turkce">Turkce</option>
+                        <option value="cesky">Cesky</option>
+                        <option value="eyynvika">Eyynvika</option>
+                        <option value="pyccknn">Pyccknn</option>
+                        <option value="ykpaihcbka">Ykpaihcbka</option>
+                      </select>
+                    </form>
+                  </li>
+                  <li class="nav-item mb-2">
+                    <form>
+                      <label for="canvas-background" class="form-label"
+                        >Canvas Background</label
+                      >
+                      <div class="radio-container">
+                        <input
+                          type="radio"
+                          id="radio1"
+                          name="background"
+                          value="color1"
+                        />
+                        <label for="radio1" class="radio-label"></label>
+                        <input
+                          type="radio"
+                          id="radio2"
+                          name="background"
+                          value="color2"
+                        />
+                        <label for="radio2" class="radio-label"></label>
+                        <input
+                          type="radio"
+                          id="radio3"
+                          name="background"
+                          value="color3"
+                        />
+                        <label for="radio3" class="radio-label"></label>
+                        <input
+                          type="radio"
+                          id="radio4"
+                          name="background"
+                          value="color4"
+                        />
+                        <label for="radio4" class="radio-label"></label>
+                        <input
+                          type="radio"
+                          id="radio5"
+                          name="background"
+                          value="color5"
+                        />
+                        <label for="radio5" class="radio-label"></label>
+                      </div>
+                    </form>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <section class="shapeSection">
-                <div class="stack-horizontalToolBarContainer">
-                    <div class="ilandAppToolBar d-flex" style="padding: 1;">
-                        <div class="stackHorizontal d-flex border round p-2" style="gap: 4;">
-                            <div class="ToolIcon__icon">
-                                <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 20 20" class="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.25"><path d="M13.542 8.542H6.458a2.5 2.5 0 0 0-2.5 2.5v3.75a2.5 2.5 0 0 0 2.5 2.5h7.084a2.5 2.5 0 0 0 2.5-2.5v-3.75a2.5 2.5 0 0 0-2.5-2.5Z"></path><path d="M10 13.958a1.042 1.042 0 1 0 0-2.083 1.042 1.042 0 0 0 0 2.083Z"></path><path d="M6.667 8.333V5.417C6.667 3.806 8.159 2.5 10 2.5c1.841 0 3.333 1.306 3.333 2.917v2.916"></path></g></svg>
-                            </div>
-
-                            <div class="vertical-line"></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.25"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5"></path><path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5"></path><path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5"></path><path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47"></path></g></svg></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 22 22" class="" fill="none" stroke-width="1.25"><g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M6 6l4.153 11.793a0.365 .365 0 0 0 .331 .207a0.366 .366 0 0 0 .332 -.207l2.184 -4.793l4.787 -1.994a0.355 .355 0 0 0 .213 -.323a0.355 .355 0 0 0 -.213 -.323l-11.787 -4.36z"></path><path d="M13.5 13.5l4.5 4.5"></path></g></svg><span class="ToolIcon__keybinding">1</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="4" y="4" width="16" height="16" rx="2"></rect></g></svg><span class="ToolIcon__keybinding">2</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M10.5 20.4l-6.9 -6.9c-.781 -.781 -.781 -2.219 0 -3l6.9 -6.9c.781 -.781 2.219 -.781 3 0l6.9 6.9c.781 .781 .781 2.219 0 3l-6.9 6.9c-.781 .781 -2.219 .781 -3 0z"></path></g></svg><span class="ToolIcon__keybinding">3</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="12" cy="12" r="9"></circle></g></svg><span class="ToolIcon__keybinding">4</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="5" y1="12" x2="19" y2="12"></line><line x1="15" y1="16" x2="19" y2="12"></line><line x1="15" y1="8" x2="19" y2="12"></line></g></svg><span class="ToolIcon__keybinding">5</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 20 20" class="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4.167 10h11.666" stroke-width="1.5"></path></svg><span class="ToolIcon__keybinding">6</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 20 20" class="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.25"><path clip-rule="evenodd" d="m7.643 15.69 7.774-7.773a2.357 2.357 0 1 0-3.334-3.334L4.31 12.357a3.333 3.333 0 0 0-.977 2.357v1.953h1.953c.884 0 1.732-.352 2.357-.977Z"></path><path d="m11.25 5.417 3.333 3.333"></path></g></svg><span class="ToolIcon__keybinding">7</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="4" y1="20" x2="7" y2="20"></line><line x1="14" y1="20" x2="21" y2="20"></line><line x1="6.9" y1="15" x2="13.8" y2="15"></line><line x1="10.2" y1="6.3" x2="16" y2="20"></line><polyline points="5 20 11 4 13 4 20 20"></polyline></g></svg><span class="ToolIcon__keybinding">8</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 20 20" class="" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.25"><path d="M12.5 6.667h.01"></path><path d="M4.91 2.625h10.18a2.284 2.284 0 0 1 2.285 2.284v10.182a2.284 2.284 0 0 1-2.284 2.284H4.909a2.284 2.284 0 0 1-2.284-2.284V4.909a2.284 2.284 0 0 1 2.284-2.284Z"></path><path d="m3.333 12.5 3.334-3.333c.773-.745 1.726-.745 2.5 0l4.166 4.166"></path><path d="m11.667 11.667.833-.834c.774-.744 1.726-.744 2.5 0l1.667 1.667"></path></g></svg><span class="ToolIcon__keybinding">9</span></div>
-                            <div class="ToolIcon__icon"><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M19 20h-10.5l-4.21 -4.3a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9.2 9.3"></path><path d="M18 13.3l-6.3 -6.3"></path></g></svg><span class="ToolIcon__keybinding">0</span></div>
-                            <div class="vertical-line "></div>
-                            <div class="d-flex px-1">
-                                <button data-prevent-outside-click="true" class="dropdown-menu-button App-toolbar__extra-tools-trigger zen-mode-transition border round" type="button" data-testid="dropdown-menu-button" title="More tools">
-                                    <div class="ToolIcon__icon">
-                                        <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M12 3l-4 7h8z"></path><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path><path d="M4 14m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z"></path></g></svg>
-                                    </div>
-
-                                </button>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-
-            <div class="right d-flex ">
-                <div class="d-flex px-3">
-                <button class="btn p-10 border round bg-primary ">
-                    <div class="ToolIcon__icon">
-                        <svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><circle cx="9" cy="7" r="4"></circle><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path><path d="M21 21v-2a4 4 0 0 0 -3 -3.85"></path></g></svg>
-                    </div>
-                </button>
-            </div>
-
-                <div class="secLeft border rounded d-flex box-sizing: content-box; p-2">
-                    <div class="ToolIcon__icon "><svg aria-hidden="true" focusable="false" role="img" viewBox="0 0 24 24" class="" fill="none" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><g stroke-width="1.5"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0"></path><line x1="3" y1="6" x2="3" y2="19"></line><line x1="12" y1="6" x2="12" y2="19"></line><line x1="21" y1="6" x2="21" y2="19"></line></g></svg></div>
-                    <div class="sidebar-trigger__label py-2">Library</div>
-                </div>
-            </div>
-
-
+          </nav>
         </div>
-
+        <div
+          class="mx-5"
+          style="display: flex; justify-content: center; align-items: center"
+          id="top-center"
+        >
+          <nav class="navbar">
+            <div class="container-fluid">
+              <ul>
+                <li class="pe-4 me-2 border-end border-dark">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/02ddc910-26be-4e42-a65e-3f72634081b6"
+                      alt="padlock image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/4db68a24-b515-47ad-8ea7-f298f07e9417"
+                      alt="hand image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/c98e9012-491a-48d7-b723-c8c0a4943b04"
+                      alt="cursor image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/7a520e19-bdcb-4ada-ab25-ce8fe778ad8e"
+                      alt="square image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/96665d36-8fc4-40e6-943d-31bcd0b0d805"
+                      alt="rhombus image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/c8c3a9aa-f2a7-47e1-8d3d-b5084bf9619d"
+                      alt="circle image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/04453bef-b1d5-482a-a138-23d87730aa58"
+                      alt="right-arrow image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/481b7c67-eb41-4142-9cb5-0c31c47bcba3"
+                      alt="line image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/d51f6196-f607-4132-a1c7-0b7a18d34fb5"
+                      alt="text image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/e8c4968e-983e-425b-aa88-49b169eb170e"
+                      alt="gallery image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/c941815d-2361-4a86-ab5e-16e39dd074b9"
+                      alt="eraser image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 px-4 mx-2 border-start border-dark">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/69079987-e73f-4475-863f-5896d2cb4087"
+                      alt="shapes image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
-
-     </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-    </body>
+        <div
+          style="display: flex; justify-content: flex-end; align-items: center"
+          id="top-right"
+        >
+          <nav class="navbar">
+            <div class="container-fluid">
+              <ul>
+                <li class="pe-4 me-2 border-end border-dark">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/2c7fec7d-f950-4cec-b962-5993fb154946"
+                      alt="people image"
+                      width="30"
+                      height="30"
+                    />
+                  </a>
+                </li>
+                <li class="p-2 mx-2">
+                  <a href="#">
+                    <img
+                      src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/0437e01b-5d0f-4502-a276-db510d3ffdf7"
+                      alt="book image"
+                      width="30"
+                      height="30"
+                      class="me-2"
+                    />
+                    Library
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section>
+        <h1 class="fw-bold fst-italic">
+          <img
+            src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/1cf66953-a801-4726-af08-0124f4753800"
+            alt="excalidraw main logo"
+            width="80"
+            height="80"
+          />
+          EXCALIDRAW
+        </h1>
+        <p class="text-body-tertiary text-center fs-5 mt-3">
+          All your data is saved locally in your browser.
+        </p>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action border-0"
+            >Open</a
+          >
+          <a href="#" class="list-group-item list-group-item-action border-0"
+            >Help</a
+          >
+          <a href="#" class="list-group-item list-group-item-action border-0"
+            >Live collaboration...</a
+          >
+          <a href="#" class="list-group-item list-group-item-action border-0"
+            >Try Excalidraw Plus!</a
+          >
+        </div>
+      </section>
+    </main>
+    <footer class="mb-5">
+      <section class="d-flex justify-content-between align-items-center">
+        <div class="d-flex" id="bottom-left">
+          <div
+            class="d-flex justify-content-between align-items-center border rounded-4 p-2 me-5"
+          >
+            <img
+              src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/4d49574e-f9ab-4a67-b984-3a54714729c8"
+              alt="minus image"
+              width="30"
+              height="30"
+              class="me-3"
+            />
+            <img
+              src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/1edb2a5c-40c1-46a2-8583-7187b258d204"
+              alt="number-10 image"
+              width="30"
+              height="30"
+            />
+            <img
+              src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/69b09dc8-633c-4f18-a7bf-860d78f3019c"
+              alt="addition image"
+              width="30"
+              height="30"
+              class="ms-3"
+            />
+          </div>
+          <div
+            class="d-flex justify-content-start align-items-center border rounded-4 p-2"
+          >
+            <img
+              src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/0696da6c-6e51-412a-9e96-1b437389dfbb"
+              alt="undo image"
+              width="30"
+              height="30"
+              class="me-2"
+            />
+            <img
+              src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/6283ad2e-aa74-41ba-975b-21cadea7d4af"
+              alt="redo image"
+              width="30"
+              height="30"
+            />
+          </div>
+        </div>
+        <div id="bottom-right">
+          <img
+            src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/99599095-9b2b-4ad4-9291-0f4b4d7c8e92"
+            alt="insurance image"
+            width="30"
+            height="30"
+            class="me-2"
+          />
+          <img
+            src="https://github.com/NikhilPeddireddy/f2-project-1/assets/139708292/c75dda77-665a-450b-81e1-113050fbe3c6"
+            alt="question image"
+            width="30"
+            height="30"
+          />
+        </div>
+      </section>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
 </html>
